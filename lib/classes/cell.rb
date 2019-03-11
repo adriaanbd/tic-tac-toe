@@ -1,4 +1,3 @@
-
 module OurTicTacToe
 	class Cell
 		attr_accessor :value
