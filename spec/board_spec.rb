@@ -66,5 +66,65 @@ module OurTicTacToe
 				expect(@board.game_over).to be false
 			end
 		end
+
+		context '#game_over' do
+      before(:each) do
+        @TestCell = Struct.new(:value)
+      end
+
+      let(:x_cell) { @TestCell.new("X") }
+      let(:o_cell) { @TestCell.new("O") }
+      let(:empty) { @TestCell.new }
+
+			it 'returns :winner when row values are all the same' do
+				grid = [
+					[x_cell, x_cell, x_cell],
+					[o_cell, x_cell, o_cell],
+					[x_cell, o_cell, x_cell],
+				]
+				board = Board.new(grid: grid)
+				expect(board.game_over).to eq(:winner)
+			end
+
+			it 'returns :winner when col value are all the same' do
+				grid = [
+					[x_cell, x_cell, empty],
+					[o_cell, x_cell, o_cell],
+					[x_cell, x_cell, empty],
+				]
+				board = Board.new(grid: grid)
+				expect(board.game_over).to eq(:winner)
+			end
+
+			it 'returns :winner when diagonals are all the same' do
+				grid = [
+					[x_cell, x_cell, empty],
+					[o_cell, x_cell, o_cell],
+					[x_cell, o_cell, x_cell],
+				]
+				board = Board.new(grid: grid)
+				expect(board.game_over).to eq(:winner)
+			end
+
+			it 'returns :draw when board is full and no winner' do
+				grid = [
+					[o_cell, x_cell, o_cell],
+					[o_cell, x_cell, o_cell],
+					[x_cell, o_cell, x_cell],
+				]
+				board = Board.new(grid: grid)
+				expect(board.game_over).to eq(:draw)
+			end
+
+			it 'returns false when no winner or draw' do
+				grid = [
+					[o_cell, x_cell, o_cell],
+					[o_cell, empty, o_cell],
+					[x_cell, empty, x_cell],
+				]
+				board = Board.new(grid: grid)
+				expect(board.game_over).to be(false)
+			end
+		end
 	end
 end
