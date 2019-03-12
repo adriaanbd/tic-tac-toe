@@ -14,10 +14,25 @@ module OurTicTacToe
 			cell.value = value
 		end
 
+		def game_over
+			return :winner if winner?
+			return :draw if draw?
+
+			false
+		end
+
+
+
 		private
 
 		def default_board
 			Array.new(3) { Array.new(3) { Cell.new } }
+		end
+
+		def winner?
+		end
+
+		def draw?
 		end
 	end
 end
