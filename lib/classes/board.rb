@@ -5,6 +5,10 @@ module OurTicTacToe
 			@grid = grid_board.fetch(:grid, default_board)
 		end
 
+		def get_cell(row, col)
+			grid[row][col]
+		end
+
 		private
 
 		def default_board
