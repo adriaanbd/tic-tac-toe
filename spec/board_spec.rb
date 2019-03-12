@@ -35,5 +35,13 @@ module OurTicTacToe
 				expect(board.get_cell(2, 1)).to eq('X')
 			end
 		end
+
+		context '#set_cell' do
+			it 'sets the cell.value at a given position' do
+				board = Board.new
+				board.set_cell(2, 1, 'Yes')
+				expect(board.get_cell(2, 1).value).to eq('Yes')
+			end
+		end
 	end
 end

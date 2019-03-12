@@ -9,6 +9,11 @@ module OurTicTacToe
 			grid[row][col]
 		end
 
+		def set_cell(row, col, value)
+			cell = get_cell(row, col)
+			cell.value = value
+		end
+
 		private
 
 		def default_board
