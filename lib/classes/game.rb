@@ -31,11 +31,13 @@ module OurTicTacToe
 				board.formatted_grid
     		puts ''
     		puts solicit_move
-    		col, row = get_move
+				col, row = get_move
+				puts ''
     		move = board.set_cell(row, col, @current_player.turn)
     		while move.nil?
     			puts solicit_move + ' Please enter a number in an empty cell.'
-    			col, row = get_move
+					col, row = get_move
+					puts ''
     			move = board.set_cell(row, col, @current_player.turn)
     		end	
 				if @board.game_over
