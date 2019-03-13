@@ -22,8 +22,8 @@ module OurTicTacToe
 		end
 
 		def formatted_grid
-			grid.each do |row|
-				puts row.map { |cell| cell.value.empty? ? '_' : cell.value }.join(' ')
+			grid.each_with_index do |row, i|
+				puts row.each_with_index.map { |cell, j| cell.value.empty? ? i == 0 ? j+1: i == 1 ? j+4 : j+7 : cell.value }.join(' ')
 			end
 		end
 
