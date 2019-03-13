@@ -21,6 +21,12 @@ module OurTicTacToe
 			false
 		end
 
+		def formatted_grid
+			grid.each do |row|
+				puts row.map { |cell| cell.value.empty? ? '_' : cell.value }.join(' ')
+			end
+		end
+
 		def winning_positions
 			grid + grid.transpose + diagonals
 		end
