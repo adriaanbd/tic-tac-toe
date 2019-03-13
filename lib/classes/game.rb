@@ -16,13 +16,31 @@ module OurTicTacToe
 			"#{@current_player.name}: Enter a number between 1 and 9."
 		end
 
-		def get_move(move)
+		def get_move(move = gets.chomp)
 			keyboard_to_position(move)
 		end
 
 		def game_over_mssg
 			return "#{@current_player.name} won!" if board.game_over == :winner
 			return 'The game ended in a tie' if board.game_over == :draw
+		end
+
+		def play
+			puts "#{@current_player.name} is the first player!"
+			while true
+				board.formatted_grid
+    		puts ''
+				puts solicit_move
+				col, row = get_move
+				board.set_cell(row, col, @current_player.turn)
+				if @board.game_over
+					puts game_over_mssg
+					board.formatted_grid
+					return
+				else
+					switch_players
+				end
+			end
 		end
 
 		private
