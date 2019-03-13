@@ -126,22 +126,5 @@ module OurTicTacToe
 				expect(board.game_over).to be(false)
 			end
 		end
-
-		context '#formatted_grid' do
-			TestCell = Struct.new(:value)
-			let(:x_cell) { TestCell.new('X') }
-			let(:o_cell) { TestCell.new('O') }
-			let(:empty) { TestCell.new }
-			it 'outputs 123456789 when empty' do
-				grid = [
-					[empty, empty, empty],
-					[empty, empty, empty],
-					[empty, empty, empty],
-				]
-				board = Board.new(grid: grid)
-				# expect(board.formatted_grid).to eq(:winner)
-				
-			end
-		end
 	end
 end

@@ -30,9 +30,14 @@ module OurTicTacToe
 			while true
 				board.formatted_grid
     		puts ''
-				puts solicit_move
-				col, row = get_move
-				board.set_cell(row, col, @current_player.turn)
+    		puts solicit_move
+    		col, row = get_move
+    		move = board.set_cell(row, col, @current_player.turn)
+    		while move.nil?
+    			puts solicit_move + ' Please enter a number in an empty cell.'
+    			col, row = get_move
+    			move = board.set_cell(row, col, @current_player.turn)
+    		end	
 				if @board.game_over
 					puts game_over_mssg
 					board.formatted_grid

@@ -11,7 +11,7 @@ module OurTicTacToe
 
 		def set_cell(row, col, value)
 			cell = get_cell(row, col)
-			cell.value = value
+			cell.value.empty? ? cell.value = value : nil
 		end
 
 		def game_over
