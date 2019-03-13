@@ -11,7 +11,7 @@ module OurTicTacToe
 
 		def set_cell(row, col, value)
 			cell = get_cell(row, col)
-			cell.value = value
+			cell.value.empty? ? cell.value = value : nil
 		end
 
 		def game_over
@@ -22,8 +22,22 @@ module OurTicTacToe
 		end
 
 		def formatted_grid
-			grid.each do |row|
-				puts row.map { |cell| cell.value.empty? ? '_' : cell.value }.join(' ')
+			grid.each_with_index do |row, outer|
+				r = row.each_with_index.map do |col, inner|
+					if col.value.empty?
+						case outer
+						when 0
+							inner + 1
+						when 1
+							inner + 4
+						when 2
+							inner + 7
+						end
+					else
+						col.value
+					end
+				end
+				puts r.join(' ')
 			end
 		end
 

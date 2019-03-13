@@ -68,13 +68,13 @@ module OurTicTacToe
 		end
 
 		context '#game_over' do
-      before(:each) do
-        @TestCell = Struct.new(:value)
-      end
+			before(:each) do
+				@TestCell = Struct.new(:value)
+			end
 
-      let(:x_cell) { @TestCell.new("X") }
-      let(:o_cell) { @TestCell.new("O") }
-      let(:empty) { @TestCell.new }
+			let(:x_cell) { @TestCell.new('X') }
+			let(:o_cell) { @TestCell.new('O') }
+			let(:empty) { @TestCell.new }
 
 			it 'returns :winner when row values are all the same' do
 				grid = [
