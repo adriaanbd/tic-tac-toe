@@ -26,11 +26,11 @@ module OurTicTacToe
 				r = row.each_with_index.map do |col, inner|
 					if col.value.empty?
 						case outer
-						when outer.zero?
+						when 0
 							inner + 1
-						when outer == 1
+						when 1
 							inner + 4
-						when outer == 2
+						when 2
 							inner + 7
 						end
 					else
