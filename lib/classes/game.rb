@@ -12,8 +12,12 @@ module OurTicTacToe
 			@current_player, @other_player = @other_player, @current_player
 		end
 
-		def solicit_move
-			"#{@current_player.name}: Enter a number between 1 and 9."
+		def solicit_move(again = false)
+			unless again
+				puts "#{@current_player.name}: Enter a number between 1 and 9.\n"
+			else
+				puts "#{@current_player.name}: Enter a number between 1 and 9. Please enter a number for an empty cell."
+			end
 		end
 
 		def get_move(move = gets.chomp)
@@ -21,28 +25,29 @@ module OurTicTacToe
 		end
 
 		def game_over_mssg
-			return "#{@current_player.name} won!" if board.game_over == :winner
-			return 'The game ended in a tie' if board.game_over == :draw
+			puts "\n #{@current_player.name} won!" if board.game_over == :winner
+			puts "\n The game ended in a tie" if board.game_over == :draw
+		end
+
+		def print_board
+			board.formatted_grid
 		end
 
 		def play
 			puts "#{@current_player.name} is the first player!"
 			while true
-				board.formatted_grid
-    		puts ''
-    		puts solicit_move
+				print_board
+    		solicit_move
 				col, row = get_move
-				puts ''
     		move = board.set_cell(row, col, @current_player.turn)
     		while move.nil?
-    			puts solicit_move + ' Please enter a number in an empty cell.'
+    			solicit_move(true)
 					col, row = get_move
-					puts ''
     			move = board.set_cell(row, col, @current_player.turn)
     		end	
 				if @board.game_over
-					puts game_over_mssg
-					board.formatted_grid
+					game_over_mssg
+					print_board
 					return
 				else
 					switch_players
