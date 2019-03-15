@@ -35,8 +35,8 @@ module OurTicTacToe
 
 		context '#solicit_move' do
 			it 'returns string interpolation asking player to make move' do
-				exp = 'Maya: Enter a number between 1 and 9.'
-				expect(@game.solicit_move).to eq(exp)
+				exp = "Maya: Enter a number between 1 and 9.\n"
+				expect {@game.solicit_move}.to output(exp).to_stdout
 			end
 		end
 
@@ -50,12 +50,12 @@ module OurTicTacToe
 		context '#game_over_mssg' do
 			it 'returns current_player.name as winner if winner?' do
 				allow(@game.board).to receive(:game_over) { :winner }
-				expect(@game.game_over_mssg).to eq('Maya won!')
+				expect{@game.game_over_mssg}.to output("Maya won!\n").to_stdout
 			end
 
 			it 'returns draw when board is full and no winner' do
 				allow(@game.board).to receive(:game_over) { :draw }
-				expect(@game.game_over_mssg).to eq('The game ended in a tie')
+				expect{@game.game_over_mssg}.to output("The game ended in a tie\n").to_stdout
 			end
 		end
 	end
