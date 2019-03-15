@@ -20,35 +20,35 @@ module OurTicTacToe
 			end
 		end
 
-		def get_move(move = gets.chomp)
-			keyboard_to_position(move)
-		end
+    def get_move(move = gets.chomp)
+      keyboard_to_position(move)
+    end
 
-		def game_over_mssg
-			puts "#{@current_player.name} won!" if board.game_over == :winner
-			puts "The game ended in a tie" if board.game_over == :draw
-		end
+    def game_over_mssg
+      puts "#{@current_player.name} won!" if board.game_over == :winner
+      puts "The game ended in a tie" if board.game_over == :draw
+    end
 
-		def print_board
-			board.formatted_grid
-		end
+    def print_board
+      board.formatted_grid
+    end
 
-		def play
-			puts "#{@current_player.name} is the first player!"
-			while true
-				print_board
-    		solicit_move
-				col, row = get_move
-    		move = board.set_cell(row, col, @current_player.avatar)
-    		solicit_until(move)
-				if @board.game_over
-					game_over_mssg
-					print_board
-					return
-				else
-					switch_players
-				end
-			end
+    def play
+      puts "#{@current_player.name} is the first player!"
+      while true
+        print_board
+        solicit_move
+        col, row = get_move
+        move = board.set_cell(row, col, @current_player.avatar)
+        solicit_until(move)
+        if @board.game_over
+          game_over_mssg
+          print_board
+          return
+        else
+          switch_players
+        end
+      end
     end
 
 		private
@@ -70,10 +70,10 @@ module OurTicTacToe
     
     def solicit_until(move)
       while move.nil?
-    			solicit_move(true)
-					col, row = get_move
-    			move = board.set_cell(row, col, @current_player.avatar)
-    		end
+          solicit_move(true)
+          col, row = get_move
+          move = board.set_cell(row, col, @current_player.avatar)
+      end
     end
 	end
 end
