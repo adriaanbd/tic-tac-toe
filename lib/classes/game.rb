@@ -41,14 +41,11 @@ module OurTicTacToe
         col, row = get_move
         move = board.set_cell(row, col, @current_player.avatar)
         solicit_until(move)
-        if @board.game_over
-          game_over_mssg
-          print_board
-          return
-        else
-          switch_players
-        end
+        break if @board.game_over
+        switch_players
       end
+      print_board
+      game_over_mssg
     end
 
 		private
