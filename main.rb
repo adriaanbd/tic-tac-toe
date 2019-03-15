@@ -1,7 +1,6 @@
 require_relative 'lib/tic_tac_toe.rb'
 
-puts 'Welcome to our version of Tic tac Toe!'
-puts ''
+puts "Welcome to our version of Tic tac Toe!\n"
 puts 'Player 1 please enter your details'
 puts 'Please enter your name'
 
@@ -20,7 +19,6 @@ end
 # Give player 2 opposite turn of player 1
 player2_turn = player1_turn == 'X' ? 'O' : 'X'
 
-puts ''
 puts "Player 2 please enter your name. You will be playing as #{player2_turn}"
 player2_name = gets.chomp
 

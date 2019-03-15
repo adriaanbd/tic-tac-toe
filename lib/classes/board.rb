@@ -23,7 +23,7 @@ module OurTicTacToe
 		def formatted_grid
 			grid.each_with_index do |row, outer|
 				r = row.each_with_index.map do |col, inner|
-					col.value.empty? ? inner +  1 + (3 * outer) : col.value
+					col.value.empty? ? inner +  1 + (row.length * outer) : col.value
 				end
 				puts r.join(' ')
 			end
