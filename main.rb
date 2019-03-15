@@ -22,8 +22,8 @@ player2_turn = player1_turn == 'X' ? 'O' : 'X'
 puts "Player 2 please enter your name. You will be playing as #{player2_turn}"
 player2_name = gets.chomp
 
-player1 = OurTicTacToe::Player.new(player1_turn, player1_name)
-player2 = OurTicTacToe::Player.new(player2_turn, player2_name)
+player1 = Player.new(player1_turn, player1_name)
+player2 = Player.new(player2_turn, player2_name)
 
 players = [player1, player2]
-OurTicTacToe::Game.new(players).play
+Game.new(players).play
