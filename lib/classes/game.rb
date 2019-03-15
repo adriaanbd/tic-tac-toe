@@ -25,8 +25,8 @@ module OurTicTacToe
 		end
 
 		def game_over_mssg
-			puts "\n #{@current_player.name} won!" if board.game_over == :winner
-			puts "\n The game ended in a tie" if board.game_over == :draw
+			puts "#{@current_player.name} won!" if board.game_over == :winner
+			puts "The game ended in a tie" if board.game_over == :draw
 		end
 
 		def print_board
