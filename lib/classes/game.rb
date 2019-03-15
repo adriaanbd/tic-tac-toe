@@ -61,6 +61,7 @@ module OurTicTacToe
           solicit_move
           col, row = get_move
           move = board.set_cell(row, col, @current_player.avatar)
+          puts move
       end
     end
 

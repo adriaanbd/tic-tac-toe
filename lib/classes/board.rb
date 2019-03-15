@@ -11,7 +11,7 @@ module OurTicTacToe
 
 		def set_cell(row, col, value)
 			cell = get_cell(row, col)
-			cell.value.empty? ? cell.value = value : nil
+			cell.value ||= value
 		end
 
 		def game_over
@@ -23,7 +23,7 @@ module OurTicTacToe
 		def formatted_grid
 			grid.each_with_index do |row, outer|
 				r = row.each_with_index.map do |col, inner|
-					col.value.empty? ? inner +  1 + (row.length * outer) : col.value
+					col.value.nil? ? inner +  1 + (row.length * outer) : col.value
 				end
 				puts r.join(' ')
 			end
