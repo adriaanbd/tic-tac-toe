@@ -36,7 +36,6 @@ module OurTicTacToe
 		context '#solicit_move' do
 			it 'returns string interpolation asking player to make move' do
 				exp = "Maya: Enter a number between 1 and 9.\n"
-				# allow(@game).to receive(solicit_move) { 'Maya: Enter a number between 1 and 9.' }
 				expect {@game.solicit_move}.to output(exp).to_stdout
 			end
 		end
