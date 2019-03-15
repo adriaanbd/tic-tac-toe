@@ -75,5 +75,6 @@ module OurTicTacToe
           move = board.set_cell(row, col, @current_player.avatar)
       end
     end
-	end
+
+  end
 end
