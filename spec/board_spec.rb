@@ -44,29 +44,6 @@ describe Board do
 		end
 	end
 
-	# context '#game_over' do
-	# 	before(:each) do
-	# 		@board = Board.new
-	# 	end
-
-	# 	it 'returns :winner when winner?' do
-	# 		allow(@board).to receive(:winner?) { true }
-	# 		expect(@board.game_over). to eq(:winner)
-	# 	end
-
-	# 	it 'returns :draw if !winner? and draw?' do
-	# 		allow(@board).to receive(:winner?) { false }
-	# 		allow(@board).to receive(:draw?) { true }
-	# 		expect(@board.game_over).to eq :draw
-	#  	end
-
-	# 	it 'returns false if !winner? and !draw?' do
-	# 		allow(@board).to receive(:winner?) { false }
-	# 		allow(@board).to receive(:draw?) { false }
-	# 		expect(@board.game_over).to be false
-	# 	end
-	# end
-
 	context '#game_over' do
 		before(:each) do
 			@TestCell = Struct.new(:value)
