@@ -1,9 +1,17 @@
 require 'spec_helper'
 
 describe Board do
+	let(:string_grid) { 'new grid' }
+	let(:test_grid) { 
+		[
+				['', '', ''],
+				['', '', ''],
+				['A', 'X', 'C']
+			]
+	}
 	context '#initialize' do
 		it 'board initializes with a grid' do
-			expect{ Board.new('grid') }.to_not raise_error
+			expect{ Board.new(string_grid) }.to_not raise_error
 		end
 
 		board = Board.new
@@ -18,19 +26,14 @@ describe Board do
 		end
 
 		it 'initializes with custom grid and returns the value' do
-			board = Board.new('hello')
-			expect(board.grid).to eq('hello')
+			board = Board.new(string_grid)
+			expect(board.grid).to eq(string_grid)
 		end
 	end
 
 	context '#get_cell' do
 		it 'returns cell value from grid[row][col] position' do
-			grid = [
-				['', '', ''],
-				['', '', ''],
-				['A', 'X', 'C']
-			]
-			board = Board.new(grid)
+			board = Board.new(test_grid)
 			expect(board.get_cell(2, 1)).to eq('X')
 		end
 	end
@@ -38,34 +41,11 @@ describe Board do
 	context '#set_cell' do
 		it 'sets the cell.value at a given position' do
 			board = Board.new
-
 			board.set_cell(2, 1, 'Yes')
 			expect(board.get_cell(2, 1).value).to eq('Yes')
 		end
 	end
 
-	# context '#game_over' do
-	# 	before(:each) do
-	# 		@board = Board.new
-	# 	end
-
-	# 	it 'returns :winner when winner?' do
-	# 		allow(@board).to receive(:winner?) { true }
-	# 		expect(@board.game_over). to eq(:winner)
-	# 	end
-
-	# 	it 'returns :draw if !winner? and draw?' do
-	# 		allow(@board).to receive(:winner?) { false }
-	# 		allow(@board).to receive(:draw?) { true }
-	# 		expect(@board.game_over).to eq :draw
-	#  	end
-
-	# 	it 'returns false if !winner? and !draw?' do
-	# 		allow(@board).to receive(:winner?) { false }
-	# 		allow(@board).to receive(:draw?) { false }
-	# 		expect(@board.game_over).to be false
-	# 	end
-	# end
 
 	context '#game_over' do
 		before(:each) do
